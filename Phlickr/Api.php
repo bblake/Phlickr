@@ -428,6 +428,31 @@ class Phlickr_Api {
             return true;
         }
     }
+    
+    /**
+     * Fetches a list of available photo licenses for Flickr.
+     *
+     * @return  array
+     * @see     Phlickr_AuthedPhoto::setLicense(), Phlickr_Photo::getLicense()
+     */
+    public function getLicenses() {
+        $resp = $this->executeMethod(
+            'flickr.photos.licenses.getInfo',
+            array(),
+            TRUE
+        );
+        $licenses = array();
+        foreach ($resp->xml->licenses->license as $license) {
+          $licenses[(string)$license['id']] = array(
+            'id' => (string)$license['id'],
+            'name' => (string)$license['name'],
+            'url' => (string)$license['url'],
+          );
+        }
+        
+        return $licenses;
+    }
+
 
     /**
      * Return the Flickr user id of the current authenticated user.
