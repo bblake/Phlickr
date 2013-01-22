@@ -7,9 +7,9 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Phlickr/Api.php';
-require_once 'Phlickr/Tests/constants.inc';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/Api.php';
+require_once dirname(__FILE__) . '/Tests/constants.inc';
 
 class Phlickr_Tests_Online_Api extends PHPUnit_Framework_TestCase {
     var $api;
@@ -49,12 +49,12 @@ class Phlickr_Tests_Online_Api extends PHPUnit_Framework_TestCase {
 
     function testExecuteMethod_WorksWithNoParams() {
         $response = $this->api->ExecuteMethod('flickr.test.echo');
-        $this->assertType('Phlickr_Response', $response, 'Returned the wrong type.');
+        $this->assertType('_Response', $response, 'Returned the wrong type.');
         $this->assertTrue($response->isOk());
     }
     function testExecuteMethod_WorksWithParams() {
         $response = $this->api->ExecuteMethod('flickr.test.echo', array('name' => 'tester'));
-        $this->assertType('Phlickr_Response', $response, 'Returned the wrong type.');
+        $this->assertType('_Response', $response, 'Returned the wrong type.');
         $this->assertTrue($response->isOk());
     }
     function testExecuteMethod_ThrowsExceptionWhenThrowOnErrorSpecified() {

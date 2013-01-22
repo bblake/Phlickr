@@ -7,9 +7,9 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Phlickr/User.php';
-require_once 'Phlickr/Tests/constants.inc';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/User.php';
+require_once dirname(__FILE__) . '/Tests/constants.inc';
 
 
 class Phlickr_Tests_Offline_User extends PHPUnit_Framework_TestCase {
@@ -109,7 +109,7 @@ class Phlickr_Tests_Offline_User extends PHPUnit_Framework_TestCase {
         );
 
         $result = $this->fromLongXml->getContactUserList();
-        $this->assertType('Phlickr_UserList', $result);
+        $this->assertType('_UserList', $result);
     }
     function testGetContactUserList_ReturnsCorrectValues() {
         $this->api->addResponseToCache(
@@ -138,7 +138,7 @@ class Phlickr_Tests_Offline_User extends PHPUnit_Framework_TestCase {
         );
 
         $result = $this->fromLongXml->getFavoritePhotoList();
-        $this->assertType('Phlickr_PhotoList', $result);
+        $this->assertType('_PhotoList', $result);
     }
     function testGetFavoritePhotoList_ReturnsCorrectValues() {
         $this->api->addResponseToCache(
@@ -159,7 +159,7 @@ class Phlickr_Tests_Offline_User extends PHPUnit_Framework_TestCase {
 
     function testGetPhotoList_ReturnsCorrectClass() {
         $result = $this->fromLongXml->getPhotoList();
-        $this->assertType('Phlickr_PhotoList', $result);
+        $this->assertType('_PhotoList', $result);
     }
     function testGetPhotoList_ReturnsCorrectValues() {
         $result = $this->fromLongXml->getPhotoList();
@@ -176,7 +176,7 @@ class Phlickr_Tests_Offline_User extends PHPUnit_Framework_TestCase {
         );
         $result = $this->fromLongXml->getPhotosetList();
 
-        $this->assertType('Phlickr_PhotosetList', $result, 'returns correct class');
+        $this->assertType('_PhotosetList', $result, 'returns correct class');
     }
     function testGetPhotosetList_ReturnsCorrectValues() {
         $this->api->addResponseToCache(
@@ -199,7 +199,7 @@ class Phlickr_Tests_Offline_User extends PHPUnit_Framework_TestCase {
         );
 
         $result = $this->fromLongXml->getGroupList();
-        $this->assertType('Phlickr_GroupList', $result);
+        $this->assertType('_GroupList', $result);
     }
     function testGetGroupList_ReturnsCorrectValues() {
         $this->api->addResponseToCache(

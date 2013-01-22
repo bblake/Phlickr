@@ -7,9 +7,9 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Phlickr/PhotoListIterator.php';
-require_once 'Phlickr/Tests/Mocks/PhotoListRequest.php';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/PhotoListIterator.php';
+require_once dirname(__FILE__) . '/Tests/Mocks/PhotoListRequest.php';
 
 class Phlickr_Tests_Offline_PhotoListIterator extends PHPUnit_Framework_TestCase {
     var $api, $pl, $request, $iterator;
@@ -120,7 +120,7 @@ class Phlickr_Tests_Offline_PhotoListIterator extends PHPUnit_Framework_TestCase
         foreach($this->iterator as $photos) {
             $this->assertType('array', $photos, 'Did not return an array.');
             foreach ($photos as $photo) {
-                $this->assertType('Phlickr_Photo', $photo);
+                $this->assertType('_Photo', $photo);
                 array_push($actualIds, $photo->getId());
             }
         }
@@ -147,7 +147,7 @@ class Phlickr_Tests_Offline_PhotoListIterator extends PHPUnit_Framework_TestCase
         $expected = range(1,31);
         $this->assertType('array', $photos);
         for ($i=0; $i<count($photos); $i++) {
-            $this->assertType('Phlickr_Photo', $photos[$i]);
+            $this->assertType('_Photo', $photos[$i]);
             $this->assertEquals((string) $expected[$i], $photos[$i]->getId());
         }
     }

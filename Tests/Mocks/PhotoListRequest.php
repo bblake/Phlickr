@@ -11,8 +11,8 @@
 /**
  * Phlickr_Api includes the core classes
  */
-require_once 'Phlickr/Api.php';
-require_once 'Phlickr/Tests/constants.inc';
+require_once dirname(__FILE__) . '/Api.php';
+require_once dirname(__FILE__) . '/Tests/constants.inc';
 
 class Phlickr_Tests_Mocks_PhotoListRequest extends Phlickr_Request {
     var $perPage, $totalPhotos, $totalPages;

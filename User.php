@@ -11,27 +11,27 @@
 /**
  * Phlickr_Api includes the core classes.
  */
-require_once 'Phlickr/Api.php';
+require_once dirname(__FILE__) . '/Api.php';
 /**
  * This class extends Phlickr_ObjectBase.
  */
-require_once 'Phlickr/Framework/ObjectBase.php';
+require_once dirname(__FILE__) . '/Framework/ObjectBase.php';
 /**
  * One or more methods returns Phlickr_GroupList objects.
  */
-require_once 'Phlickr/GroupList.php';
+require_once dirname(__FILE__) . '/GroupList.php';
 /**
  * One or more methods returns Phlickr_PhotoList objects.
  */
-require_once 'Phlickr/PhotoList.php';
+require_once dirname(__FILE__) . '/PhotoList.php';
 /**
  * One or more methods returns Phlickr_PhotosetList objects.
  */
-require_once 'Phlickr/PhotosetList.php';
+require_once dirname(__FILE__) . '/PhotosetList.php';
 /**
  * One or more methods returns Phlickr_UserList objects.
  */
-require_once 'Phlickr/UserList.php';
+require_once dirname(__FILE__) . '/UserList.php';
 
 
 /**
@@ -44,8 +44,8 @@ require_once 'Phlickr/UserList.php';
  * Sample usage:
  * <code>
  * <?php
- * include_once 'Phlickr/Api.php';
- * include_once 'Phlickr/User.php';
+ * include_once '/Api.php';
+ * include_once '/User.php';
  *
  * $api = new Phlickr_Api(FLICKR_API_KEY, FLICKR_API_SECRET, FLICKR_TOKEN);
  * $user = Phlickr_User::findByUrl($api, 'http://flickr.com/people/drewish/');

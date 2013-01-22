@@ -7,9 +7,9 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Phlickr/PhotoList.php';
-require_once 'Phlickr/Tests/Mocks/PhotoListRequest.php';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/PhotoList.php';
+require_once dirname(__FILE__) . '/Tests/Mocks/PhotoListRequest.php';
 
 
 class Phlickr_Tests_Offline_PhotoList extends PHPUnit_Framework_TestCase {
@@ -114,10 +114,10 @@ class Phlickr_Tests_Offline_PhotoList extends PHPUnit_Framework_TestCase {
         $userid = $this->api->getUserId();
         foreach ($this->pl->getPhotos() as $p) {
             // everything should be a photo object
-            $this->assertType('Phlickr_Photo', $p);
+            $this->assertType('_Photo', $p);
             if ($userid == $p->getUserId()) {
                 // but those with our user id should be authed photos
-                $this->assertType('Phlickr_AuthedPhoto', $p);
+                $this->assertType('_AuthedPhoto', $p);
             }
         }
     }
@@ -127,7 +127,7 @@ class Phlickr_Tests_Offline_PhotoList extends PHPUnit_Framework_TestCase {
         $this->assertTrue(is_array($photos), 'Did not return an array.');
         $this->assertEquals($this->perPage, count($photos));
         foreach ($photos as $p) {
-            $this->assertType('Phlickr_Photo', $p);
+            $this->assertType('_Photo', $p);
         }
     }
 
@@ -137,7 +137,7 @@ class Phlickr_Tests_Offline_PhotoList extends PHPUnit_Framework_TestCase {
         $this->assertTrue(is_array($photos), 'Did not return an array.');
         $this->assertEquals($this->perPage, count($photos));
         foreach ($photos as $p) {
-            $this->assertType('Phlickr_Photo', $p);
+            $this->assertType('_Photo', $p);
         }
     }
 
@@ -145,7 +145,7 @@ class Phlickr_Tests_Offline_PhotoList extends PHPUnit_Framework_TestCase {
         $this->pl->setPage(2);
 
         $photo = $this->pl->getRandomPhoto();
-        $this->assertType('Phlickr_Photo', $photo);
+        $this->assertType('_Photo', $photo);
         $this->assertEquals(2, $this->pl->getPage(), 'the page should not have changed.');
 
         $id1 = $photo->getId();

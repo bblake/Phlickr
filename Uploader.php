@@ -11,23 +11,23 @@
 /**
  * Phlickr_Api includes the core classes.
  */
-require_once 'Phlickr/Api.php';
+require_once dirname(__FILE__) . '/Api.php';
 /**
  * One or more methods returns Phlickr_Photo objects.
  */
-require_once 'Phlickr/AuthedPhoto.php';
+require_once dirname(__FILE__) . '/AuthedPhoto.php';
 /**
  * uploadBatch() uses this to create a photoset.
  */
-require_once 'Phlickr/AuthedPhotosetList.php';
+require_once dirname(__FILE__) . '/AuthedPhotosetList.php';
 /**
  * uploadBatch() accepts Phlickr_Framework_IUploadBatch as a parameter.
  */
-require_once 'Phlickr/Framework/IUploadBatch.php';
+require_once dirname(__FILE__) . '/Framework/IUploadBatch.php';
 /**
  * uploadBatch() accepts Phlickr_Framework_IUploadListener as a parameter.
  */
-require_once 'Phlickr/Framework/IUploadListener.php';
+require_once dirname(__FILE__) . '/Framework/IUploadListener.php';
 
 /**
  * Uploads photos to Flickr.
@@ -35,8 +35,8 @@ require_once 'Phlickr/Framework/IUploadListener.php';
 * Sample usage:
  * <code>
  * <?php
- * require_once 'Phlickr/Api.php';
- * require_once 'Phlickr/Uploader.php';
+ * require_once dirname(__FILE__) . '/Api.php';
+ * require_once dirname(__FILE__) . '/Uploader.php';
  *
  * define('UPLOAD_DIRECTORY', 'D:\sf\phlickr\samples\files_to_testupload');
  * define('PHOTO_EXTENSION', '.jpg');

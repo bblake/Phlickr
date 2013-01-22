@@ -11,15 +11,15 @@
 /**
  * Phlickr_Api includes the core classes.
  */
-require_once 'Phlickr/Api.php';
+require_once dirname(__FILE__) . '/Api.php';
 /**
  * This class extends Phlickr_ObjectBase.
  */
-require_once 'Phlickr/Framework/ObjectBase.php';
+require_once dirname(__FILE__) . '/Framework/ObjectBase.php';
 /**
  * One or more methods returns Phlickr_PhotosetList objects.
  */
-require_once 'Phlickr/PhotoList.php';
+require_once dirname(__FILE__) . '/PhotoList.php';
 
 /**
  * Phlickr_Group access to the photos in a group.
@@ -27,9 +27,9 @@ require_once 'Phlickr/PhotoList.php';
  * Sample usage:
  * <code>
  * <?php
- * include_once 'Phlickr/Api.php';
- * include_once 'Phlickr/GroupList.php';
- * include_once 'Phlickr/PhotoListIterator.php';
+ * include_once '/Api.php';
+ * include_once '/GroupList.php';
+ * include_once '/PhotoListIterator.php';
  *
  * $api = new Phlickr_Api(FLICKR_API_KEY, FLICKR_API_SECRET, FLICKR_TOKEN);
  *

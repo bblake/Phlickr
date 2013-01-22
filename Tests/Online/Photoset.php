@@ -7,9 +7,9 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Phlickr/Tests/constants.inc';
-require_once 'Phlickr/Photoset.php';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/Tests/constants.inc';
+require_once dirname(__FILE__) . '/Photoset.php';
 
 class Phlickr_Tests_Online_Photoset extends PHPUnit_Framework_TestCase {
     var $api;
@@ -26,6 +26,6 @@ class Phlickr_Tests_Online_Photoset extends PHPUnit_Framework_TestCase {
 
     function testGetPhotoList() {
         $result = $this->photoset->getPhotoList();
-        $this->assertType('Phlickr_PhotosetPhotoList', $result);
+        $this->assertType('_PhotosetPhotoList', $result);
     }
 }

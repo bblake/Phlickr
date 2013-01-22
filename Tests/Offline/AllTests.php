@@ -12,43 +12,43 @@
  */
 
 if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Phlickr_Tests_Offline_AllTests::main');
+    define('PHPUnit_MAIN_METHOD', '_Tests_Offline_AllTests::main');
 }
 
-require_once 'PHPUnit/Framework/TestSuite.php';
-require_once 'PHPUnit/TextUI/TestRunner.php';
-require_once 'PHPUnit/Util/Filter.php';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestSuite.php';
+require_once dirname(__FILE__) . 'PHPUnit/TextUI/TestRunner.php';
+require_once dirname(__FILE__) . 'PHPUnit/Util/Filter.php';
 
 // sub-directories
-require_once 'Phlickr/Tests/Offline/Import/AllTests.php';
-require_once 'Phlickr/Tests/Offline/PhotoSortStrategy/AllTests.php';
-require_once 'Phlickr/Tests/Offline/TextUi/AllTests.php';
+require_once dirname(__FILE__) . '/Tests/Offline/Import/AllTests.php';
+require_once dirname(__FILE__) . '/Tests/Offline/PhotoSortStrategy/AllTests.php';
+require_once dirname(__FILE__) . '/Tests/Offline/TextUi/AllTests.php';
 
 // core
-require_once 'Phlickr/Tests/Offline/Api.php';
-require_once 'Phlickr/Tests/Offline/Cache.php';
-require_once 'Phlickr/Tests/Offline/Request.php';
-require_once 'Phlickr/Tests/Offline/Response.php';
-require_once 'Phlickr/Tests/Offline/Uploader.php';
+require_once dirname(__FILE__) . '/Tests/Offline/Api.php';
+require_once dirname(__FILE__) . '/Tests/Offline/Cache.php';
+require_once dirname(__FILE__) . '/Tests/Offline/Request.php';
+require_once dirname(__FILE__) . '/Tests/Offline/Response.php';
+require_once dirname(__FILE__) . '/Tests/Offline/Uploader.php';
 
 // wrappers
-require_once 'Phlickr/Tests/Offline/AuthedGroup.php';
-require_once 'Phlickr/Tests/Offline/AuthedPhoto.php';
-require_once 'Phlickr/Tests/Offline/AuthedPhotoset.php';
-require_once 'Phlickr/Tests/Offline/AuthedPhotosetList.php';
-require_once 'Phlickr/Tests/Offline/AuthedUser.php';
-require_once 'Phlickr/Tests/Offline/Group.php';
-require_once 'Phlickr/Tests/Offline/GroupList.php';
-//require_once 'Phlickr/Tests/Offline/Note.php';
-require_once 'Phlickr/Tests/Offline/Photo.php';
-require_once 'Phlickr/Tests/Offline/PhotoList.php';
-require_once 'Phlickr/Tests/Offline/PhotoListIterator.php';
-require_once 'Phlickr/Tests/Offline/Photoset.php';
-require_once 'Phlickr/Tests/Offline/PhotosetPhotoList.php';
-require_once 'Phlickr/Tests/Offline/PhotosetList.php';
-require_once 'Phlickr/Tests/Offline/PhotoSorter.php';
-require_once 'Phlickr/Tests/Offline/User.php';
-require_once 'Phlickr/Tests/Offline/UserList.php';
+require_once dirname(__FILE__) . '/Tests/Offline/AuthedGroup.php';
+require_once dirname(__FILE__) . '/Tests/Offline/AuthedPhoto.php';
+require_once dirname(__FILE__) . '/Tests/Offline/AuthedPhotoset.php';
+require_once dirname(__FILE__) . '/Tests/Offline/AuthedPhotosetList.php';
+require_once dirname(__FILE__) . '/Tests/Offline/AuthedUser.php';
+require_once dirname(__FILE__) . '/Tests/Offline/Group.php';
+require_once dirname(__FILE__) . '/Tests/Offline/GroupList.php';
+//require_once dirname(__FILE__) . '/Tests/Offline/Note.php';
+require_once dirname(__FILE__) . '/Tests/Offline/Photo.php';
+require_once dirname(__FILE__) . '/Tests/Offline/PhotoList.php';
+require_once dirname(__FILE__) . '/Tests/Offline/PhotoListIterator.php';
+require_once dirname(__FILE__) . '/Tests/Offline/Photoset.php';
+require_once dirname(__FILE__) . '/Tests/Offline/PhotosetPhotoList.php';
+require_once dirname(__FILE__) . '/Tests/Offline/PhotosetList.php';
+require_once dirname(__FILE__) . '/Tests/Offline/PhotoSorter.php';
+require_once dirname(__FILE__) . '/Tests/Offline/User.php';
+require_once dirname(__FILE__) . '/Tests/Offline/UserList.php';
 
 class Phlickr_Tests_Offline_AllTests {
     public static function main() {
@@ -56,7 +56,7 @@ class Phlickr_Tests_Offline_AllTests {
     }
 
     public static function suite() {
-        $suite = new PHPUnit_Framework_TestSuite('Phlickr Offline Tests');
+        $suite = new PHPUnit_Framework_TestSuite(' Offline Tests');
 
         // sub-directories
         $suite->addTest(Phlickr_Tests_Offline_Import_AllTests::suite());
@@ -64,34 +64,34 @@ class Phlickr_Tests_Offline_AllTests {
         $suite->addTest(Phlickr_Tests_Offline_TextUi_AllTests::suite());
 
         // core
-        $suite->addTestSuite('Phlickr_Tests_Offline_Api');
-        $suite->addTestSuite('Phlickr_Tests_Offline_Cache');
-        $suite->addTestSuite('Phlickr_Tests_Offline_Request');
-        $suite->addTestSuite('Phlickr_Tests_Offline_Response');
-        $suite->addTestSuite('Phlickr_Tests_Offline_Uploader');
+        $suite->addTestSuite('_Tests_Offline_Api');
+        $suite->addTestSuite('_Tests_Offline_Cache');
+        $suite->addTestSuite('_Tests_Offline_Request');
+        $suite->addTestSuite('_Tests_Offline_Response');
+        $suite->addTestSuite('_Tests_Offline_Uploader');
 
         // wrappers
-        $suite->addTestSuite('Phlickr_Tests_Offline_AuthedGroup');
-        $suite->addTestSuite('Phlickr_Tests_Offline_AuthedPhoto');
-        $suite->addTestSuite('Phlickr_Tests_Offline_AuthedPhotoset');
-#        $suite->addTestSuite('Phlickr_Tests_Offline_AuthedPhotosetList');
-        $suite->addTestSuite('Phlickr_Tests_Offline_AuthedUser');
-        $suite->addTestSuite('Phlickr_Tests_Offline_Group');
-        $suite->addTestSuite('Phlickr_Tests_Offline_GroupList');
-        $suite->addTestSuite('Phlickr_Tests_Offline_Note');
-        $suite->addTestSuite('Phlickr_Tests_Offline_Photo');
-        $suite->addTestSuite('Phlickr_Tests_Offline_PhotoList');
-        $suite->addTestSuite('Phlickr_Tests_Offline_PhotoListIterator');
-        $suite->addTestSuite('Phlickr_Tests_Offline_Photoset');
-        $suite->addTestSuite('Phlickr_Tests_Offline_PhotosetPhotoList');
-#        $suite->addTestSuite('Phlickr_Tests_Offline_PhotosetList');
-        $suite->addTestSuite('Phlickr_Tests_Offline_PhotoSorter');
-        $suite->addTestSuite('Phlickr_Tests_Offline_User');
-        $suite->addTestSuite('Phlickr_Tests_Offline_UserList');
+        $suite->addTestSuite('_Tests_Offline_AuthedGroup');
+        $suite->addTestSuite('_Tests_Offline_AuthedPhoto');
+        $suite->addTestSuite('_Tests_Offline_AuthedPhotoset');
+#        $suite->addTestSuite('_Tests_Offline_AuthedPhotosetList');
+        $suite->addTestSuite('_Tests_Offline_AuthedUser');
+        $suite->addTestSuite('_Tests_Offline_Group');
+        $suite->addTestSuite('_Tests_Offline_GroupList');
+        $suite->addTestSuite('_Tests_Offline_Note');
+        $suite->addTestSuite('_Tests_Offline_Photo');
+        $suite->addTestSuite('_Tests_Offline_PhotoList');
+        $suite->addTestSuite('_Tests_Offline_PhotoListIterator');
+        $suite->addTestSuite('_Tests_Offline_Photoset');
+        $suite->addTestSuite('_Tests_Offline_PhotosetPhotoList');
+#        $suite->addTestSuite('_Tests_Offline_PhotosetList');
+        $suite->addTestSuite('_Tests_Offline_PhotoSorter');
+        $suite->addTestSuite('_Tests_Offline_User');
+        $suite->addTestSuite('_Tests_Offline_UserList');
         return $suite;
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Phlickr_Tests_Offline_AllTests::main') {
+if (PHPUnit_MAIN_METHOD == '_Tests_Offline_AllTests::main') {
     Phlickr_Tests_Offline_AllTests::main();
 }

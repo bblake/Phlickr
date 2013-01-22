@@ -7,9 +7,9 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Phlickr/Tests/constants.inc';
-require_once 'Phlickr/AuthedPhotoset.php';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/Tests/constants.inc';
+require_once dirname(__FILE__) . '/AuthedPhotoset.php';
 
 class Phlickr_Tests_Online_AuthedPhotoset extends PHPUnit_Framework_TestCase {
     var $api;
@@ -51,7 +51,7 @@ class Phlickr_Tests_Online_AuthedPhotoset extends PHPUnit_Framework_TestCase {
         $photoIds = array(TESTING_REAL_PHOTO_ID_JPG);
         $ret = $this->photoset->editPhotos(TESTING_REAL_PHOTO_ID_JPG, $photoIds);
 
-        $this->assertType('Phlickr_PhotosetPhotoList', $ret);
+        $this->assertType('_PhotosetPhotoList', $ret);
         $this->assertEquals('flickr.photosets.getPhotos',
             $ret->getRequest()->getMethod());
     }

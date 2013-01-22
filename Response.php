@@ -11,7 +11,7 @@
 /**
  * Phlickr_Api includes the core classes.
  */
-require_once 'Phlickr/Api.php';
+require_once dirname(__FILE__) . '/Api.php';
 
 /**
  * Phlickr_Response handles the XML returned by a Phlickr_Request.
@@ -19,7 +19,7 @@ require_once 'Phlickr/Api.php';
  * Sample usage:
  * <code>
  * <?php
- * include_once 'Phlickr/Api.php';
+ * include_once '/Api.php';
  *
  * // store a sample response into a variable
  * $xmlResponse = <<<XML

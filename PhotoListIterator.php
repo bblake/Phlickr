@@ -11,11 +11,11 @@
 /**
  * Phlickr_Api includes the core classes.
  */
-require_once 'Phlickr/Api.php';
+require_once dirname(__FILE__) . '/Api.php';
 /**
  * This class uses the Phlickr_PhotoList object.
  */
-require_once 'Phlickr/PhotoList.php';
+require_once dirname(__FILE__) . '/PhotoList.php';
 
 /**
  * Phlickr_PhotoListIterator is used to iterate through the pages of a
@@ -25,9 +25,9 @@ require_once 'Phlickr/PhotoList.php';
  * Sample usage:
  * <code>
  * <?php
- * include_once 'Phlickr/Api.php';
- * include_once 'Phlickr/Group.php';
- * include_once 'Phlickr/PhotoListIterator.php';
+ * include_once '/Api.php';
+ * include_once '/Group.php';
+ * include_once '/PhotoListIterator.php';
  *
  * $api = new Phlickr_Api(FLICKR_API_KEY, FLICKR_API_SECRET, FLICKR_TOKEN);
  *

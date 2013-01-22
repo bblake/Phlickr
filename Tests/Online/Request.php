@@ -7,9 +7,9 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Phlickr/Tests/constants.inc';
-require_once 'Phlickr/Api.php';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/Tests/constants.inc';
+require_once dirname(__FILE__) . '/Api.php';
 
 class Phlickr_Tests_Online_Request extends PHPUnit_Framework_TestCase {
     var $api;
@@ -35,7 +35,7 @@ class Phlickr_Tests_Online_Request extends PHPUnit_Framework_TestCase {
         }
         $this->assertEquals(array(), $this->reqInvalid->getParams());
         $this->assertNotNull($result, 'Execute returned null.');
-        $this->assertType('Phlickr_Response', $result, 'Returned the wrong type.');
+        $this->assertType('_Response', $result, 'Returned the wrong type.');
         $this->assertEquals(Phlickr_Response::STAT_FAIL, strval($result->stat), 'Status should be failed.');
     }
 
@@ -43,7 +43,7 @@ class Phlickr_Tests_Online_Request extends PHPUnit_Framework_TestCase {
         $result = $this->reqValid->execute();
         $this->assertEquals(array(), $this->reqValid->getParams());
         $this->assertNotNull($result, 'Execute returned null.');
-        $this->assertType('Phlickr_Response', $result, 'Returned the wrong type.');
+        $this->assertType('_Response', $result, 'Returned the wrong type.');
         $this->assertEquals(Phlickr_Response::STAT_OK, strval($result->stat), 'Expected ok, error: ' . $result->err_msg);
     }
 

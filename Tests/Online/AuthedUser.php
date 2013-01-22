@@ -7,9 +7,9 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Phlickr/AuthedUser.php';
-require_once 'Phlickr/Tests/constants.inc';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/AuthedUser.php';
+require_once dirname(__FILE__) . '/Tests/constants.inc';
 
 
 class Phlickr_Tests_Online_AuthedUser extends PHPUnit_Framework_TestCase {
@@ -26,13 +26,13 @@ class Phlickr_Tests_Online_AuthedUser extends PHPUnit_Framework_TestCase {
     }
 
     function testConstructor_AssignsId() {
-        $this->assertType('Phlickr_AuthedUser', $this->user);
+        $this->assertType('_AuthedUser', $this->user);
         $this->assertEquals(TESTING_XML_USER_ID, $this->user->getId());
     }
 
     function testGetContactUserList_ReturnsCorrectClass() {
         $result = $this->user->getContactUserList();
-        $this->assertType('Phlickr_UserList', $result);
+        $this->assertType('_UserList', $result);
         $this->assertEquals(2, $result->getCount());
         $this->assertEquals(array('26159919@N00','40962351@N00'),
             $result->getIds());
@@ -40,7 +40,7 @@ class Phlickr_Tests_Online_AuthedUser extends PHPUnit_Framework_TestCase {
 
     function testGetPhotoList_DefaultPerPage() {
         $result = $this->user->getPhotoList();
-        $this->assertType('Phlickr_PhotoList', $result);
+        $this->assertType('_PhotoList', $result);
         $this->assertEquals(Phlickr_PhotoList::PER_PAGE_DEFAULT, $result->getPhotosPerPage());
         $photos = $result->getPhotos();
         $this->assertEquals(TESTING_USER_ID, $photos[0]->getUserId());
@@ -48,7 +48,7 @@ class Phlickr_Tests_Online_AuthedUser extends PHPUnit_Framework_TestCase {
 
     function testGetPhotoList_AssignedPerPage() {
         $result = $this->user->getPhotoList(1);
-        $this->assertType('Phlickr_PhotoList', $result);
+        $this->assertType('_PhotoList', $result);
         $this->assertEquals(1, $result->getPhotosPerPage());
         $photos = $result->getPhotos();
         $this->assertEquals(TESTING_USER_ID, $photos[0]->getUserId());
@@ -56,7 +56,7 @@ class Phlickr_Tests_Online_AuthedUser extends PHPUnit_Framework_TestCase {
 
     function testGetFavoritesPhotoList() {
         $result = $this->user->getFavoritePhotoList();
-        $this->assertType('Phlickr_PhotoList', $result);
+        $this->assertType('_PhotoList', $result);
         $this->assertEquals('flickr.favorites.getList', $result->getRequest()->getMethod());
         //$this->assertEquals(1, $result->getCount());
         $this->assertContains('6508272', $result->getIds());
@@ -64,7 +64,7 @@ class Phlickr_Tests_Online_AuthedUser extends PHPUnit_Framework_TestCase {
 
     function testGetGroupList() {
         $result = $this->user->getGroupList();
-        $this->assertType('Phlickr_GroupList', $result);
+        $this->assertType('_GroupList', $result);
         $this->assertEquals(2, $result->getCount());
         $ids = $result->getIds();
         $this->assertContains('84636767@N00', $ids);
@@ -87,7 +87,7 @@ class Phlickr_Tests_Online_AuthedUser extends PHPUnit_Framework_TestCase {
         sleep(1);
         $ret->refresh();
 
-        $this->assertType('Phlickr_PhotoList', $ret);
+        $this->assertType('_PhotoList', $ret);
         $this->assertEquals('flickr.favorites.getList', $ret->getRequest()->getMethod());
         $this->assertContains($photo_id, $ret->getIds(), "should be a fav after we add it");
 
@@ -96,7 +96,7 @@ class Phlickr_Tests_Online_AuthedUser extends PHPUnit_Framework_TestCase {
         sleep(1);
         $ret->refresh();
 
-        $this->assertType('Phlickr_PhotoList', $ret);
+        $this->assertType('_PhotoList', $ret);
         $this->assertEquals('flickr.favorites.getList', $ret->getRequest()->getMethod());
         $this->assertNotContains($photo_id, $ret->getIds(), "shouldn't be a fav after we remove it.");
     }

@@ -12,28 +12,28 @@
  */
 
 if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Phlickr_Tests_Online_AllTests::main');
+    define('PHPUnit_MAIN_METHOD', '_Tests_Online_AllTests::main');
 }
 
-require_once 'PHPUnit/Framework/TestSuite.php';
-require_once 'PHPUnit/TextUI/TestRunner.php';
-require_once 'PHPUnit/Util/Filter.php';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestSuite.php';
+require_once dirname(__FILE__) . 'PHPUnit/TextUI/TestRunner.php';
+require_once dirname(__FILE__) . 'PHPUnit/Util/Filter.php';
 
-require_once 'Phlickr/Tests/Online/Api.php';
-require_once 'Phlickr/Tests/Online/Request.php';
-//require_once 'Phlickr/Tests/Online/Uploader.php';
+require_once dirname(__FILE__) . '/Tests/Online/Api.php';
+require_once dirname(__FILE__) . '/Tests/Online/Request.php';
+//require_once dirname(__FILE__) . '/Tests/Online/Uploader.php';
 
-require_once 'Phlickr/Tests/Online/AuthedGroup.php';
-require_once 'Phlickr/Tests/Online/AuthedPhoto.php';
-require_once 'Phlickr/Tests/Online/AuthedPhotoset.php';
-require_once 'Phlickr/Tests/Online/AuthedPhotosetList.php';
-require_once 'Phlickr/Tests/Online/AuthedUser.php';
-require_once 'Phlickr/Tests/Online/Group.php';
-require_once 'Phlickr/Tests/Online/Photo.php';
-require_once 'Phlickr/Tests/Online/PhotoList.php';
-require_once 'Phlickr/Tests/Online/Photoset.php';
-require_once 'Phlickr/Tests/Online/PhotosetList.php';
-require_once 'Phlickr/Tests/Online/User.php';
+require_once dirname(__FILE__) . '/Tests/Online/AuthedGroup.php';
+require_once dirname(__FILE__) . '/Tests/Online/AuthedPhoto.php';
+require_once dirname(__FILE__) . '/Tests/Online/AuthedPhotoset.php';
+require_once dirname(__FILE__) . '/Tests/Online/AuthedPhotosetList.php';
+require_once dirname(__FILE__) . '/Tests/Online/AuthedUser.php';
+require_once dirname(__FILE__) . '/Tests/Online/Group.php';
+require_once dirname(__FILE__) . '/Tests/Online/Photo.php';
+require_once dirname(__FILE__) . '/Tests/Online/PhotoList.php';
+require_once dirname(__FILE__) . '/Tests/Online/Photoset.php';
+require_once dirname(__FILE__) . '/Tests/Online/PhotosetList.php';
+require_once dirname(__FILE__) . '/Tests/Online/User.php';
 
 
 class Phlickr_Tests_Online_AllTests {
@@ -42,31 +42,31 @@ class Phlickr_Tests_Online_AllTests {
     }
 
     public static function suite() {
-        $suite = new PHPUnit_Framework_TestSuite('Phlickr Online Tests');
+        $suite = new PHPUnit_Framework_TestSuite(' Online Tests');
 
         // core
-        $suite->addTestSuite('Phlickr_Tests_Online_Api');
-        $suite->addTestSuite('Phlickr_Tests_Online_Request');
-        $suite->addTestSuite('Phlickr_Tests_Online_Uploader');
+        $suite->addTestSuite('_Tests_Online_Api');
+        $suite->addTestSuite('_Tests_Online_Request');
+        $suite->addTestSuite('_Tests_Online_Uploader');
 
         // wrappers
-        $suite->addTestSuite('Phlickr_Tests_Online_AuthedGroup');
-        $suite->addTestSuite('Phlickr_Tests_Online_AuthedPhoto');
-        $suite->addTestSuite('Phlickr_Tests_Online_AuthedPhotoset');
-        $suite->addTestSuite('Phlickr_Tests_Online_AuthedPhotosetList');
-        $suite->addTestSuite('Phlickr_Tests_Online_AuthedUser');
-        $suite->addTestSuite('Phlickr_Tests_Online_Group');
-        $suite->addTestSuite('Phlickr_Tests_Online_Photo');
-        $suite->addTestSuite('Phlickr_Tests_Online_PhotoList');
-        $suite->addTestSuite('Phlickr_Tests_Online_Photoset');
-        $suite->addTestSuite('Phlickr_Tests_Online_PhotosetList');
-        $suite->addTestSuite('Phlickr_Tests_Online_User');
+        $suite->addTestSuite('_Tests_Online_AuthedGroup');
+        $suite->addTestSuite('_Tests_Online_AuthedPhoto');
+        $suite->addTestSuite('_Tests_Online_AuthedPhotoset');
+        $suite->addTestSuite('_Tests_Online_AuthedPhotosetList');
+        $suite->addTestSuite('_Tests_Online_AuthedUser');
+        $suite->addTestSuite('_Tests_Online_Group');
+        $suite->addTestSuite('_Tests_Online_Photo');
+        $suite->addTestSuite('_Tests_Online_PhotoList');
+        $suite->addTestSuite('_Tests_Online_Photoset');
+        $suite->addTestSuite('_Tests_Online_PhotosetList');
+        $suite->addTestSuite('_Tests_Online_User');
 
         return $suite;
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Phlickr_Tests_Online_AllTests::main') {
+if (PHPUnit_MAIN_METHOD == '_Tests_Online_AllTests::main') {
     Phlickr_Tests_Online_AllTests::main();
 }
 

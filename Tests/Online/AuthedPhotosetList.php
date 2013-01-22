@@ -7,9 +7,9 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Phlickr/Tests/constants.inc';
-require_once 'Phlickr/AuthedPhotosetList.php';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/Tests/constants.inc';
+require_once dirname(__FILE__) . '/AuthedPhotosetList.php';
 
 class Phlickr_Tests_Online_AuthedPhotosetList extends PHPUnit_Framework_TestCase {
     var $api;
@@ -43,7 +43,7 @@ class Phlickr_Tests_Online_AuthedPhotosetList extends PHPUnit_Framework_TestCase
         $result = $this->psl->getPhotosets();
         $this->assertTrue(is_array($result), 'Response should be an an array.');
         foreach ($result as $o) {
-            $this->assertType('Phlickr_AuthedPhotoset', $o,
+            $this->assertType('_AuthedPhotoset', $o,
                 'Should have returned an array of AuthedPhotosets.');
         }
     }

@@ -11,15 +11,15 @@
 /**
  * Phlickr_Api includes the core classes.
  */
-require_once 'Phlickr/Api.php';
+require_once dirname(__FILE__) . '/Api.php';
 /**
  * This class extends Phlickr_ListBase.
  */
-require_once 'Phlickr/Framework/ListBase.php';
+require_once dirname(__FILE__) . '/Framework/ListBase.php';
 /**
  * One or more methods returns Phlickr_Photoset objects.
  */
-require_once 'Phlickr/Photoset.php';
+require_once dirname(__FILE__) . '/Photoset.php';
 
 /**
  * Phlickr_PhotosetList is a read-only list of a users's photosets.

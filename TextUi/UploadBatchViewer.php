@@ -11,7 +11,7 @@
 /**
  * This class uses Phlickr_Framework_IUploadBatch as a parameter.
  */
-require_once 'Phlickr/Framework/IUploadBatch.php';
+require_once dirname(__FILE__) . '/Framework/IUploadBatch.php';
 
 /**
  * A command line viewer for upload batches. So you can see what's going to be uploaded before uploading.

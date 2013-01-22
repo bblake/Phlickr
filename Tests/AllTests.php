@@ -11,15 +11,15 @@
  */
 
 if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Phlickr_Tests_AllTests::main');
+    define('PHPUnit_MAIN_METHOD', '_Tests_AllTests::main');
 }
 
-require_once 'PHPUnit/Framework/TestSuite.php';
-require_once 'PHPUnit/TextUI/TestRunner.php';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestSuite.php';
+require_once dirname(__FILE__) . 'PHPUnit/TextUI/TestRunner.php';
 
 // sub-directories
-require_once 'Phlickr/Tests/Online/AllTests.php';
-require_once 'Phlickr/Tests/Offline/AllTests.php';
+require_once dirname(__FILE__) . '/Tests/Online/AllTests.php';
+require_once dirname(__FILE__) . '/Tests/Offline/AllTests.php';
 
 
 class Phlickr_Tests_AllTests {
@@ -37,7 +37,7 @@ class Phlickr_Tests_AllTests {
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Phlickr_Tests_AllTests::main') {
+if (PHPUnit_MAIN_METHOD == '_Tests_AllTests::main') {
     Phlickr_Tests_AllTests::main();
 }
 

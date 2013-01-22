@@ -7,9 +7,9 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Phlickr/User.php';
-require_once 'Phlickr/Tests/constants.inc';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/User.php';
+require_once dirname(__FILE__) . '/Tests/constants.inc';
 
 
 class Phlickr_Tests_Online_User extends PHPUnit_Framework_TestCase {
@@ -33,7 +33,7 @@ class Phlickr_Tests_Online_User extends PHPUnit_Framework_TestCase {
 
     function testGetContactUserList_ReturnsCorrectClass() {
         $result = $this->user->getContactUserList();
-        $this->assertType('Phlickr_UserList', $result);
+        $this->assertType('_UserList', $result);
         $this->assertEquals(2, $result->getCount());
         $this->assertEquals(array('26159919@N00','40962351@N00'),
             $result->getIds());
@@ -41,7 +41,7 @@ class Phlickr_Tests_Online_User extends PHPUnit_Framework_TestCase {
 
     function testGetFavoritesPhotoList() {
         $result = $this->user->getFavoritePhotoList();
-        $this->assertType('Phlickr_PhotoList', $result);
+        $this->assertType('_PhotoList', $result);
         $this->assertEquals('flickr.favorites.getPublicList',
             $result->getRequest()->getMethod());
         $this->assertEquals(1, $result->getCount());
@@ -50,14 +50,14 @@ class Phlickr_Tests_Online_User extends PHPUnit_Framework_TestCase {
 
     function testGetGroupList() {
         $result = $this->user->getGroupList();
-        $this->assertType('Phlickr_GroupList', $result);
+        $this->assertType('_GroupList', $result);
         $this->assertEquals(1, $result->getCount());
         $this->assertEquals(array('97544914@N00'), $result->getIds());
     }
 
     function testGetPhotoList_DefaultPerPage() {
         $result = $this->user->getPhotoList();
-        $this->assertType('Phlickr_PhotoList', $result);
+        $this->assertType('_PhotoList', $result);
         $this->assertEquals(Phlickr_PhotoList::PER_PAGE_DEFAULT,
             $result->getPhotosPerPage());
         $photos = $result->getPhotos();
@@ -66,7 +66,7 @@ class Phlickr_Tests_Online_User extends PHPUnit_Framework_TestCase {
 
     function testGetPhotoList_AssignedPerPage() {
         $result = $this->user->getPhotoList(1);
-        $this->assertType('Phlickr_PhotoList', $result);
+        $this->assertType('_PhotoList', $result);
         $this->assertEquals(1, $result->getPhotosPerPage());
         $photos = $result->getPhotos();
         $this->assertEquals(TESTING_USER_ID, $photos[0]->getUserId());
@@ -74,7 +74,7 @@ class Phlickr_Tests_Online_User extends PHPUnit_Framework_TestCase {
 
     function testFindByUsername_Valid() {
         $result = Phlickr_User::findByUsername($this->api, 'just testing');
-        $this->assertType('Phlickr_User', $result);
+        $this->assertType('_User', $result);
         $this->assertEquals(TESTING_USER_ID, $result->getId());
     }
     function testFindByUsername_InvalidThrows() {
@@ -88,7 +88,7 @@ class Phlickr_Tests_Online_User extends PHPUnit_Framework_TestCase {
 
     function testFindByEmail_Valid() {
         $result = Phlickr_User::findByEmail($this->api, 'testing@drewish.com');
-        $this->assertType('Phlickr_User', $result);
+        $this->assertType('_User', $result);
         $this->assertEquals(TESTING_USER_ID, $result->getId());
     }
     function testFindByEmail_InvalidThrows() {
@@ -102,22 +102,22 @@ class Phlickr_Tests_Online_User extends PHPUnit_Framework_TestCase {
 
     function testFindByUrl_ValidPhotosUserId() {
         $result = Phlickr_User::findByUrl($this->api, 'http://flickr.com/photos/39059360@N00/');
-        $this->assertType('Phlickr_User', $result);
+        $this->assertType('_User', $result);
         $this->assertEquals(TESTING_USER_ID, $result->getId());
     }
     function testFindByUrl_ValidPeopleUserId() {
         $result = Phlickr_User::findByUrl($this->api, 'http://flickr.com/people/39059360@N00/');
-        $this->assertType('Phlickr_User', $result);
+        $this->assertType('_User', $result);
         $this->assertEquals(TESTING_USER_ID, $result->getId());
     }
     function testFindByUrl_ValidPhotosName() {
         $result = Phlickr_User::findByUrl($this->api, 'http://www.flickr.com/photos/justtesting/');
-        $this->assertType('Phlickr_User', $result);
+        $this->assertType('_User', $result);
         $this->assertEquals(TESTING_USER_ID, $result->getId());
     }
     function testFindByUrl_ValidPeopleName() {
         $result = Phlickr_User::findByUrl($this->api, 'http://www.flickr.com/people/justtesting/');
-        $this->assertType('Phlickr_User', $result);
+        $this->assertType('_User', $result);
         $this->assertEquals(TESTING_USER_ID, $result->getId());
     }
     function testFindByUrl_InvalidThrows() {

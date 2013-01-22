@@ -7,11 +7,11 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Phlickr/Tests/constants.inc';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/Tests/constants.inc';
 
-require_once 'Phlickr/Photo.php';
-require_once 'Phlickr/PhotoSortStrategy/ByColor.php';
+require_once dirname(__FILE__) . '/Photo.php';
+require_once dirname(__FILE__) . '/PhotoSortStrategy/ByColor.php';
 
 class Phlickr_Tests_Offline_PhotoSortStrategy_ByColor extends PHPUnit_Framework_TestCase {
     var $photo;

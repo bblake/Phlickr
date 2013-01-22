@@ -11,7 +11,7 @@
 /**
  * Phlickr_Api includes the core classes.
  */
-require_once 'Phlickr/Api.php';
+require_once dirname(__FILE__) . '/Api.php';
 
 /**
  * The Phlickr_Cache stores responses to previous Flickr API calls.
@@ -19,7 +19,7 @@ require_once 'Phlickr/Api.php';
  * Sample usage:
  * <code>
  * <?php
- * include_once 'Phlickr/Api.php';
+ * include_once '/Api.php';
  *
  * $cache = new Phlickr_Cache();
  *
@@ -38,8 +38,8 @@ require_once 'Phlickr/Api.php';
  * Serialization Example:
  * <code>
  * <?php
- * include_once 'Phlickr/Api.php';
- * include_once 'Phlickr/User.php';
+ * include_once '/Api.php';
+ * include_once '/User.php';
  *
  * // file to save the cache into
  * define('FILENAME', '/tmp/phlickr.cache');

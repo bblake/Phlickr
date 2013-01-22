@@ -11,11 +11,11 @@
 /**
  * This class extends Phlickr_Framework_IUploadListener.
  */
-require_once 'Phlickr/Framework/IUploadListener.php';
+require_once dirname(__FILE__) . '/Framework/IUploadListener.php';
 /**
  * This class uses Phlickr_Uploader to build URLs to edit uploaded photos.
  */
-require_once 'Phlickr/Uploader.php';
+require_once dirname(__FILE__) . '/Uploader.php';
 
 /**
  * A command line listener to display upload status information.

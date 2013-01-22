@@ -11,11 +11,11 @@
 /**
  * Phlickr_Api includes the core classes.
  */
-require_once 'Phlickr/Api.php';
+require_once dirname(__FILE__) . '/Api.php';
 /**
  * This class implements IPhotoList.
  */
-require_once 'Phlickr/Framework/IPhotoList.php';
+require_once dirname(__FILE__) . '/Framework/IPhotoList.php';
 
 /**
  * Phlickr_PhotoList represents paged list of photos.

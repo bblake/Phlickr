@@ -11,15 +11,15 @@
 /**
  * Phlickr_Api includes the core classes.
  */
-require_once 'Phlickr/Api.php';
+require_once dirname(__FILE__) . '/Api.php';
 /**
  * This class extends Phlickr_ListBase.
  */
-require_once 'Phlickr/Framework/ListBase.php';
+require_once dirname(__FILE__) . '/Framework/ListBase.php';
 /**
  * One or more methods returns Phlickr_User objects.
  */
-require_once 'Phlickr/User.php';
+require_once dirname(__FILE__) . '/User.php';
 
 /**
  * Phlickr_UserList simply holds a list of users.
@@ -31,7 +31,7 @@ require_once 'Phlickr/User.php';
  * Sample usage:
  * <code>
  * <?php
- * include_once 'Phlickr/Api.php';
+ * include_once '/Api.php';
  *
  * // insert sample code here
  *

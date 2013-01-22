@@ -7,13 +7,13 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Phlickr/Tests/constants.inc';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/Tests/constants.inc';
 
-require_once 'Phlickr/PhotoSorter.php';
-require_once 'Phlickr/PhotosetPhotoList.php';
-require_once 'Phlickr/PhotoSortStrategy/ById.php';
-require_once 'Phlickr/PhotoSortStrategy/ByTitle.php';
+require_once dirname(__FILE__) . '/PhotoSorter.php';
+require_once dirname(__FILE__) . '/PhotosetPhotoList.php';
+require_once dirname(__FILE__) . '/PhotoSortStrategy/ById.php';
+require_once dirname(__FILE__) . '/PhotoSortStrategy/ByTitle.php';
 
 define('PHOTOSET_ID', 534039);
 define('PHOTOSET_PHOTOS', <<<XML
@@ -69,7 +69,7 @@ class Phlickr_Tests_Offline_PhotoSorter extends PHPUnit_Framework_TestCase {
         $sorter = new Phlickr_PhotoSorter($this->stratId);
 
         $this->assertNotNull($sorter);
-        $this->assertType('Phlickr_PhotoSorter', $sorter);
+        $this->assertType('_PhotoSorter', $sorter);
         $this->assertFalse($sorter->isInReverse(),
             'isInReverse() was not set correctly');
     }
@@ -77,7 +77,7 @@ class Phlickr_Tests_Offline_PhotoSorter extends PHPUnit_Framework_TestCase {
         $sorter = new Phlickr_PhotoSorter($this->stratId, true);
 
         $this->assertNotNull($sorter);
-        $this->assertType('Phlickr_PhotoSorter', $sorter);
+        $this->assertType('_PhotoSorter', $sorter);
         $this->assertTrue($sorter->isInReverse(),
             'isInReverse() was not set correctly');
     }

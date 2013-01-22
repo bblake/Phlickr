@@ -11,7 +11,7 @@
 /**
  * Phlickr_Api includes the core classes.
  */
-require_once 'Phlickr/Api.php';
+require_once dirname(__FILE__) . '/Api.php';
 
 /**
  * The Phlickr_Request executes a Flickr API method and returns a
@@ -20,7 +20,7 @@ require_once 'Phlickr/Api.php';
  * Sample usage:
  * <code>
  * <?php
- * include_once 'Phlickr/Api.php';
+ * include_once '/Api.php';
  * $api = new Phlickr_Api(FLICKR_API_KEY, FLICKR_API_SECRET, FLICKR_TOKEN);
  *
  * // create a request to search for photos tagged with person and happy

@@ -11,11 +11,11 @@
 /**
  * Phlickr_Api includes the core classes.
  */
-require_once 'Phlickr/Api.php';
+require_once dirname(__FILE__) . '/Api.php';
 /**
  * This class extends Phlickr_ObjectBase.
  */
-require_once 'Phlickr/Framework/ObjectBase.php';
+require_once dirname(__FILE__) . '/Framework/ObjectBase.php';
 
 /**
  * Phlickr_Group access to the photos in a group.

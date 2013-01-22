@@ -11,7 +11,7 @@
 /**
  * One or more methods returns Phlickr_Comment objects
  */
-require_once 'Phlickr/Comment.php';
+require_once dirname(__FILE__) . '/../Comment.php';
 
 /**
  * Specifies the basic retreival functions that a PhotoList must support.

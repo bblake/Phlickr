@@ -7,9 +7,9 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Phlickr/Api.php';
-require_once 'Phlickr/Tests/constants.inc';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/Api.php';
+require_once dirname(__FILE__) . '/Tests/constants.inc';
 
 class Phlickr_Tests_Offline_Api extends PHPUnit_Framework_TestCase {
     var $api;
@@ -51,7 +51,7 @@ class Phlickr_Tests_Offline_Api extends PHPUnit_Framework_TestCase {
     }
     function testConstructor_AssignsCache() {
         $this->assertNotNull($this->api->getCache());
-        $this->assertType('Phlickr_Cache', $this->api->getCache());
+        $this->assertType('_Cache', $this->api->getCache());
     }
     function testConstructor_AssignsCacheFilename() {
         $this->assertEquals('', $this->api->getCacheFilename());
@@ -75,7 +75,7 @@ class Phlickr_Tests_Offline_Api extends PHPUnit_Framework_TestCase {
             $this->fail('the save was probably bad, createFrom() barfed on the file.');
         }
         unlink($filename);
-        $this->assertType('Phlickr_Api', $api);
+        $this->assertType('_Api', $api);
         $this->assertEquals($this->api->getKey(), $api->getKey(), 'key was not loaded correctly.');
         $this->assertEquals($this->api->getSecret(), $api->getSecret(), 'secret was not loaded correctly.');
         $this->assertEquals($this->api->getAuthToken(), $api->getAuthToken(), 'token was not loaded correctly.');
@@ -100,7 +100,7 @@ class Phlickr_Tests_Offline_Api extends PHPUnit_Framework_TestCase {
         $api = Phlickr_Api::createFrom($filename);
         unlink($filename);
 
-        $this->assertType('Phlickr_Api', $api);
+        $this->assertType('_Api', $api);
         $this->assertEquals('key01234', $api->getKey(), 'key was not loaded correctly.');
         $this->assertEquals('a-secret', $api->getSecret(), 'secret was not loaded correctly.');
         $this->assertNull($api->getAuthToken(), 'token was not loaded correctly.');
@@ -117,7 +117,7 @@ class Phlickr_Tests_Offline_Api extends PHPUnit_Framework_TestCase {
         $api = Phlickr_Api::createFrom($filename);
         unlink($filename);
 
-        $this->assertType('Phlickr_Api', $api);
+        $this->assertType('_Api', $api);
         $this->assertEquals('key', $api->getKey(), 'key was not loaded correctly.');
         $this->assertEquals('secret', $api->getSecret(), 'secret was not loaded correctly.');
         $this->assertEquals('token', $api->getAuthToken(), 'token was not loaded correctly.');
@@ -220,7 +220,7 @@ class Phlickr_Tests_Offline_Api extends PHPUnit_Framework_TestCase {
         unset($this->api);
         $this->assertTrue(file_exists($filename), 'the file should exist');
         $cache = Phlickr_Cache::createFrom($filename);
-        $this->assertType('Phlickr_Cache', $cache);
+        $this->assertType('_Cache', $cache);
         $this->assertTrue($cache->has('a key'), 'value should exist');
     }
 
@@ -285,7 +285,7 @@ class Phlickr_Tests_Offline_Api extends PHPUnit_Framework_TestCase {
 
     function testCreateRequest_ReturnsCorrectClass() {
         $request = $this->api->CreateRequest('amethod');
-        $this->assertType('Phlickr_Request', $request, 'Returned the wrong type.');
+        $this->assertType('_Request', $request, 'Returned the wrong type.');
     }
     function testCreateRequest_ReturnsRequestWithMethod() {
         $request = $this->api->CreateRequest('amethod');

@@ -12,11 +12,11 @@
 /**
  * Phlickr_Api includes the core classes.
  */
-require_once 'Phlickr/Api.php';
+require_once dirname(__FILE__) . '/Api.php';
 /**
  * This class implements IPhotoSortStrategy.
  */
-require_once 'Phlickr/Framework/IPhotoSortStrategy.php';
+require_once dirname(__FILE__) . '/Framework/IPhotoSortStrategy.php';
 
 
 /**

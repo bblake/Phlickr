@@ -7,10 +7,10 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Phlickr/Tests/constants.inc';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/Tests/constants.inc';
 
-require_once 'Phlickr/TextUi/UploadBatchViewer.php';
+require_once dirname(__FILE__) . '/TextUi/UploadBatchViewer.php';
 
 
 class MockUploadBatch implements Phlickr_Framework_IUploadBatch {

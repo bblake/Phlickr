@@ -7,10 +7,10 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Phlickr/AuthedPhoto.php';
-require_once 'Phlickr/Uploader.php';
-require_once 'Phlickr/Tests/constants.inc';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/AuthedPhoto.php';
+require_once dirname(__FILE__) . '/Uploader.php';
+require_once dirname(__FILE__) . '/Tests/constants.inc';
 
 class Phlickr_Tests_Online_AuthedPhoto extends PHPUnit_Framework_TestCase {
     var $api;

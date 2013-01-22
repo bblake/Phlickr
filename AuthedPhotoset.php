@@ -11,7 +11,7 @@
 /**
  * This class extends Phlickr_Photoset.
  */
-require_once 'Phlickr/Photoset.php';
+require_once dirname(__FILE__) . '/Photoset.php';
 
 /**
  * Phlickr_AuthedPhotoset represents a Flickr photoset.
@@ -19,8 +19,8 @@ require_once 'Phlickr/Photoset.php';
   * Sample usage:
  * <code>
  * <?php
- * include_once 'Phlickr/Api.php';
- * include_once 'Phlickr/AuthedPhotosetList.php';
+ * include_once '/Api.php';
+ * include_once '/AuthedPhotosetList.php';
  *
  * $api = new Phlickr_Api(FLICKR_API_KEY, FLICKR_API_SECRET, FLICKR_TOKEN);
  *

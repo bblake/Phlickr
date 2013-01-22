@@ -7,9 +7,9 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Phlickr/AuthedUser.php';
-require_once 'Phlickr/Tests/constants.inc';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/AuthedUser.php';
+require_once dirname(__FILE__) . '/Tests/constants.inc';
 
 
 
@@ -66,7 +66,7 @@ class Phlickr_Tests_Offline_AuthedUser extends PHPUnit_Framework_TestCase {
 
     function testConstructor_ReturnsCorrectClass() {
         $this->assertNotNull($this->user);
-        $this->assertType('Phlickr_AuthedUser', $this->user);
+        $this->assertType('_AuthedUser', $this->user);
     }
     function testConstructor_ThrowsWithoutAuthedApi() {
         $api = new Phlickr_Api(TESTING_API_KEY, TESTING_API_SECRET);
@@ -95,7 +95,7 @@ class Phlickr_Tests_Offline_AuthedUser extends PHPUnit_Framework_TestCase {
         );
 
         $result = $this->user->getContactUserList();
-        $this->assertType('Phlickr_UserList', $result);
+        $this->assertType('_UserList', $result);
     }
     function testGetContactUserList_ReturnsCorrectValues() {
         $this->api->addResponseToCache(
@@ -123,7 +123,7 @@ class Phlickr_Tests_Offline_AuthedUser extends PHPUnit_Framework_TestCase {
             TESTING_RESP_OK_PREFIX . TESTING_XML_PHOTOS . TESTING_RESP_SUFIX
         );
         $result = $this->user->getPhotoList();
-        $this->assertType('Phlickr_PhotoList', $result);
+        $this->assertType('_PhotoList', $result);
     }
     function testGetPhotoList_ReturnsCorrectValues() {
         $this->api->addResponseToCache(
@@ -163,7 +163,7 @@ class Phlickr_Tests_Offline_AuthedUser extends PHPUnit_Framework_TestCase {
         );
 
         $result = $this->user->getFavoritePhotoList(5);
-        $this->assertType('Phlickr_PhotoList', $result);
+        $this->assertType('_PhotoList', $result);
     }
     function testGetFavoritePhotoList_ReturnsCorrectValues() {
         $this->api->addResponseToCache(
@@ -203,7 +203,7 @@ class Phlickr_Tests_Offline_AuthedUser extends PHPUnit_Framework_TestCase {
         );
 
         $result = $this->user->getPhotosetList();
-        $this->assertType('Phlickr_AuthedPhotosetList', $result, 'returns correct class');
+        $this->assertType('_AuthedPhotosetList', $result, 'returns correct class');
     }
     function testGetPhotosetList_ReturnsCorrectValues() {
         $this->api->addResponseToCache(
@@ -226,7 +226,7 @@ class Phlickr_Tests_Offline_AuthedUser extends PHPUnit_Framework_TestCase {
         );
 
         $result = $this->user->getGroupList();
-        $this->assertType('Phlickr_GroupList', $result);
+        $this->assertType('_GroupList', $result);
     }
     function testGetGroups_ReturnsCorrectValues() {
         $this->api->addResponseToCache(

@@ -7,10 +7,10 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Phlickr/UserList.php';
-require_once 'Phlickr/Tests/Mocks/Request.php';
-require_once 'Phlickr/Tests/constants.inc';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/UserList.php';
+require_once dirname(__FILE__) . '/Tests/Mocks/Request.php';
+require_once dirname(__FILE__) . '/Tests/constants.inc';
 
 class Phlickr_Tests_Offline_UserList extends PHPUnit_Framework_TestCase {
     var $api;
@@ -102,21 +102,21 @@ class Phlickr_Tests_Offline_UserList extends PHPUnit_Framework_TestCase {
         $result = $this->usersOnline->getUsers();
         $this->assertTrue(is_array($result), 'did not return an array. ');
         foreach ($result as $r) {
-            $this->assertType('Phlickr_User', $r);
+            $this->assertType('_User', $r);
         }
     }
     function testGetUsers_PublicContacts_ReturnsArrayOfUsers() {
         $result = $this->usersPublicContacts->getUsers();
         $this->assertTrue(is_array($result), 'did not return an array. ');
         foreach ($result as $r) {
-            $this->assertType('Phlickr_User', $r);
+            $this->assertType('_User', $r);
         }
     }
     function testGetUsers_PrivateContacts_ReturnsArrayOfUsers() {
         $result = $this->usersPrivateContacts->getUsers();
         $this->assertTrue(is_array($result), 'did not return an array. ');
         foreach ($result as $r) {
-            $this->assertType('Phlickr_User', $r);
+            $this->assertType('_User', $r);
         }
     }
 

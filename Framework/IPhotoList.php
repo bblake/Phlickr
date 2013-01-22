@@ -11,11 +11,11 @@
 /**
  * This class implements IList.
  */
-require_once 'Phlickr/Framework/IList.php';
+require_once dirname(__FILE__) . '/IList.php';
 /**
  * One or more methods returns Phlickr_Photo and Phlickr_AuthedPhoto objects.
  */
-require_once 'Phlickr/AuthedPhoto.php';
+require_once dirname(__FILE__) . '/../AuthedPhoto.php';
 
 /**
  * Specifies the basic retreival functions that a PhotoList must support.

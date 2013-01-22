@@ -7,9 +7,9 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Phlickr/AuthedGroup.php';
-require_once 'Phlickr/Tests/constants.inc';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/AuthedGroup.php';
+require_once dirname(__FILE__) . '/Tests/constants.inc';
 
 
 class Phlickr_Tests_Online_AuthedGroup extends PHPUnit_Framework_TestCase {
@@ -30,7 +30,7 @@ class Phlickr_Tests_Online_AuthedGroup extends PHPUnit_Framework_TestCase {
 
     function testGetPhotoList() {
         $result = $this->group->getPhotoList();
-        $this->assertType('Phlickr_PhotoList', $result);
+        $this->assertType('_PhotoList', $result);
         $this->assertEquals('flickr.groups.pools.getPhotos', $result->getRequest()->getMethod());
     }
 

@@ -7,9 +7,9 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Phlickr/Tests/constants.inc';
-require_once 'Phlickr/Request.php';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/Tests/constants.inc';
+require_once dirname(__FILE__) . '/Request.php';
 
 class Phlickr_Tests_Offline_Cache extends PHPUnit_Framework_TestCase {
     var $cache;
@@ -136,7 +136,7 @@ class Phlickr_Tests_Offline_Cache extends PHPUnit_Framework_TestCase {
         $unser = unserialize(fread($temp, 8096));
         fclose($temp);
 
-        $this->assertType('Phlickr_Cache', $unser);
+        $this->assertType('_Cache', $unser);
         $this->assertEquals('first response', $unser->get(self::URL_A));
         $this->assertEquals('second response', $unser->get(self::URL_B));
     }
@@ -158,7 +158,7 @@ class Phlickr_Tests_Offline_Cache extends PHPUnit_Framework_TestCase {
 
         unlink($tempName);
 
-        $this->assertType('Phlickr_Cache', $unser);
+        $this->assertType('_Cache', $unser);
         $this->assertEquals('first response', $unser->get(self::URL_A));
         $this->assertEquals('second response', $unser->get(self::URL_B));
     }
@@ -175,7 +175,7 @@ class Phlickr_Tests_Offline_Cache extends PHPUnit_Framework_TestCase {
 
         unlink($tempName);
 
-        $this->assertType('Phlickr_Cache', $cache);
+        $this->assertType('_Cache', $cache);
         $this->assertEquals($shelfLife, $cache->getShelfLife());
         $this->assertEquals('first response', $cache->get(self::URL_A));
         $this->assertEquals('second response', $cache->get(self::URL_B));
@@ -184,7 +184,7 @@ class Phlickr_Tests_Offline_Cache extends PHPUnit_Framework_TestCase {
     function testCreateFrom_MissingFile_DefaultShelfLife() {
         $cache = Phlickr_Cache::createFrom('');
 
-        $this->assertType('Phlickr_Cache', $cache);
+        $this->assertType('_Cache', $cache);
         $this->assertEquals(Phlickr_Cache::DEFAULT_SHELF_LIFE,
             $cache->getShelfLife());
         $this->assertFalse($cache->has(self::URL_A));
@@ -193,7 +193,7 @@ class Phlickr_Tests_Offline_Cache extends PHPUnit_Framework_TestCase {
     function testCreateFrom_MissingFile_AssignedShelfLife() {
         $cache = Phlickr_Cache::createFrom('', 999);
 
-        $this->assertType('Phlickr_Cache', $cache);
+        $this->assertType('_Cache', $cache);
         $this->assertEquals(999, $cache->getShelfLife());
         $this->assertFalse($cache->has(self::URL_A));
         $this->assertFalse($cache->has(self::URL_B));
@@ -208,7 +208,7 @@ class Phlickr_Tests_Offline_Cache extends PHPUnit_Framework_TestCase {
 
         unlink($tempName);
 
-        $this->assertType('Phlickr_Cache', $cache);
+        $this->assertType('_Cache', $cache);
         $this->assertEquals(Phlickr_Cache::DEFAULT_SHELF_LIFE,
             $cache->getShelfLife());
         $this->assertFalse($cache->has(self::URL_A));
@@ -223,7 +223,7 @@ class Phlickr_Tests_Offline_Cache extends PHPUnit_Framework_TestCase {
 
         unlink($tempName);
 
-        $this->assertType('Phlickr_Cache', $cache);
+        $this->assertType('_Cache', $cache);
         $this->assertEquals(999, $cache->getShelfLife());
         $this->assertFalse($cache->has(self::URL_A));
         $this->assertFalse($cache->has(self::URL_B));

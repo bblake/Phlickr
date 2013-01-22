@@ -11,7 +11,7 @@
 /**
  * This class extends Phlickr_Photo.
  */
-require_once 'Phlickr/Photo.php';
+require_once dirname(__FILE__) . '/Photo.php';
 /**
  * This class extends Phlickr_Photo to allow modifications of a photo.
  *

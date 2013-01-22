@@ -11,22 +11,22 @@
 /**
  * Phlickr_Api includes the core classes.
  */
-require_once 'Phlickr/Api.php';
+require_once dirname(__FILE__) . '/Api.php';
 /**
  * This class extends Phlickr_User.
  */
-require_once 'Phlickr/User.php';
+require_once dirname(__FILE__) . '/User.php';
 /**
  * One or more methods returns Phlickr_AuthedPhotosetList objects.
  */
-require_once 'Phlickr/AuthedPhotosetList.php';
+require_once dirname(__FILE__) . '/AuthedPhotosetList.php';
 /**
  * This class extends Phlickr_User to perform actions on a logged in user.
  *
  * Sample usage:
  * <code>
  * <?php
- * include_once 'Phlickr/AuthedUser.php';
+ * include_once '/AuthedUser.php';
  *
  * // instantiate the object
  * $api = new Phlickr_Api(FLICKR_API_KEY, FLICKR_API_SECRET, FLICKR_TOKEN);

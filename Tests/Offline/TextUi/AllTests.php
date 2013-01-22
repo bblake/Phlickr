@@ -13,15 +13,15 @@
 
 
 if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Phlickr_Tests_Offline_TextUi_AllTests::main');
+    define('PHPUnit_MAIN_METHOD', '_Tests_Offline_TextUi_AllTests::main');
 }
 
-require_once 'PHPUnit/Framework/TestSuite.php';
-require_once 'PHPUnit/TextUI/TestRunner.php';
-require_once 'PHPUnit/Util/Filter.php';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestSuite.php';
+require_once dirname(__FILE__) . 'PHPUnit/TextUI/TestRunner.php';
+require_once dirname(__FILE__) . 'PHPUnit/Util/Filter.php';
 
-require_once 'Phlickr/Tests/Offline/TextUi/UploadBatchViewer.php';
-require_once 'Phlickr/Tests/Offline/TextUi/UploadListener.php';
+require_once dirname(__FILE__) . '/Tests/Offline/TextUi/UploadBatchViewer.php';
+require_once dirname(__FILE__) . '/Tests/Offline/TextUi/UploadListener.php';
 
 class Phlickr_Tests_Offline_TextUi_AllTests {
     public static function main() {
@@ -29,15 +29,15 @@ class Phlickr_Tests_Offline_TextUi_AllTests {
     }
 
     public static function suite() {
-        $suite = new PHPUnit_Framework_TestSuite('Phlickr Offline Import Tests');
+        $suite = new PHPUnit_Framework_TestSuite(' Offline Import Tests');
 
-        $suite->addTestSuite('Phlickr_Tests_Offline_TextUi_UploadBatchViewer');
-        $suite->addTestSuite('Phlickr_Tests_Offline_TextUi_UploadListener');
+        $suite->addTestSuite('_Tests_Offline_TextUi_UploadBatchViewer');
+        $suite->addTestSuite('_Tests_Offline_TextUi_UploadListener');
 
         return $suite;
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Phlickr_Tests_Offline_TextUi_AllTests::main') {
+if (PHPUnit_MAIN_METHOD == '_Tests_Offline_TextUi_AllTests::main') {
     Phlickr_Tests_Offline_TextUi_AllTests::main();
 }

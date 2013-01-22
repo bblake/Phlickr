@@ -7,11 +7,11 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Phlickr/Tests/constants.inc';
-require_once 'Phlickr/Uploader.php';
-require_once 'Phlickr/AuthedUser.php'; // to verify that photo count increments
-require_once 'Phlickr/AuthedPhoto.php'; // to verify that photos exist
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/Tests/constants.inc';
+require_once dirname(__FILE__) . '/Uploader.php';
+require_once dirname(__FILE__) . '/AuthedUser.php'; // to verify that photo count increments
+require_once dirname(__FILE__) . '/AuthedPhoto.php'; // to verify that photos exist
 
 class Phlickr_Tests_Online_Uploader extends PHPUnit_Framework_TestCase {
     var $api;

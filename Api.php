@@ -10,19 +10,19 @@
 /**
  * Include Phlickr_Cache, a core class.
  */
-require_once 'Phlickr/Cache.php';
+require_once dirname(__FILE__) . '/Cache.php';
 /**
  * Include the Phlickr exceptions, core classes.
  */
-require_once 'Phlickr/Exception.php';
+require_once dirname(__FILE__) . '/Exception.php';
 /**
  * Include Phlickr_Request, a core class.
  */
-require_once 'Phlickr/Request.php';
+require_once dirname(__FILE__) . '/Request.php';
 /**
  * Include Phlickr_CResponse, a core class.
  */
-require_once 'Phlickr/Response.php';
+require_once dirname(__FILE__) . '/Response.php';
 
 /**
  * Phlickr_Api acts as a connection to the Flickr API and provides several
@@ -31,7 +31,7 @@ require_once 'Phlickr/Response.php';
  * Sample usage:
  * <code>
  * <?php
- * include_once 'Phlickr/Api.php';
+ * include_once '/Api.php';
  * $api = new Phlickr_Api(FLICKR_API_KEY, FLICRK_API_SECRET);
  *
  * // Authentication is no longer done with an email/password. the first step

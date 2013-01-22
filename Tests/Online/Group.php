@@ -7,9 +7,9 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Phlickr/Group.php';
-require_once 'Phlickr/Tests/constants.inc';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/Group.php';
+require_once dirname(__FILE__) . '/Tests/constants.inc';
 
 
 class Phlickr_Tests_Online_Group extends PHPUnit_Framework_TestCase {
@@ -27,17 +27,17 @@ class Phlickr_Tests_Online_Group extends PHPUnit_Framework_TestCase {
 
     function testFindByUrl_IdUrl() {
         $result = Phlickr_Group::findByUrl($this->api, 'http://flickr.com/groups/84636767@N00/');
-        $this->assertType('Phlickr_Group', $result);
+        $this->assertType('_Group', $result);
         $this->assertEquals('84636767@N00', $result->getId());
     }
     function testFindByUrl_NamedUrl() {
         $result = Phlickr_Group::findByUrl($this->api, 'http://flickr.com/groups/infrastructure/');
-        $this->assertType('Phlickr_Group', $result);
+        $this->assertType('_Group', $result);
         $this->assertEquals('97544914@N00', $result->getId());
     }
     function testFindByUrl_NamedPoolUrl() {
         $result = Phlickr_Group::findByUrl($this->api, 'http://flickr.com/groups/infrastructure/pool/');
-        $this->assertType('Phlickr_Group', $result);
+        $this->assertType('_Group', $result);
         $this->assertEquals('97544914@N00', $result->getId());
     }
     function testFindByUrl_InvalidThrows() {
@@ -52,7 +52,7 @@ class Phlickr_Tests_Online_Group extends PHPUnit_Framework_TestCase {
 
     function testGetPhotoList() {
         $result = $this->group->getPhotoList();
-        $this->assertType('Phlickr_PhotoList', $result);
+        $this->assertType('_PhotoList', $result);
         $this->assertEquals('flickr.groups.pools.getPhotos', $result->getRequest()->getMethod());
     }
 }

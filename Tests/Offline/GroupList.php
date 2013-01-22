@@ -7,10 +7,10 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Phlickr/GroupList.php';
-require_once 'Phlickr/Tests/Mocks/Request.php';
-require_once 'Phlickr/Tests/constants.inc';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/GroupList.php';
+require_once dirname(__FILE__) . '/Tests/Mocks/Request.php';
+require_once dirname(__FILE__) . '/Tests/constants.inc';
 
 class Phlickr_Tests_Offline_GroupList extends PHPUnit_Framework_TestCase {
     var $api;
@@ -69,7 +69,7 @@ class Phlickr_Tests_Offline_GroupList extends PHPUnit_Framework_TestCase {
 	$result = $this->groupsPublic->getGroups();
 	$this->assertTrue(is_array($result), 'did not return an array. ');
 	foreach ($result as $r) {
-	    $this->assertType('Phlickr_Group', $r);
+	    $this->assertType('_Group', $r);
 	}
     }
     function testGetGroups_ReturnsCorrectGroups() {

@@ -11,7 +11,7 @@
 /**
  * This class implements the Phlickr_Framework_IUploadBatch interface.
  */
-include_once ('Phlickr/Framework/IUploadBatch.php');
+include_once ('/Framework/IUploadBatch.php');
 
 /**
  * Import a {@link http://gallery.sf.net/ Gallery} album so it can be uploaded
@@ -37,10 +37,10 @@ include_once ('Phlickr/Framework/IUploadBatch.php');
  *
  * <code>
  * <?php
- * require_once 'Phlickr/Import/Gallery.php';
- * require_once 'Phlickr/TextUi/UploadListener.php';
- * require_once 'Phlickr/Api.php';
- * require_once 'Phlickr/Uploader.php';
+ * require_once dirname(__FILE__) . '/Import/Gallery.php';
+ * require_once dirname(__FILE__) . '/TextUi/UploadListener.php';
+ * require_once dirname(__FILE__) . '/Api.php';
+ * require_once dirname(__FILE__) . '/Uploader.php';
  *
  * // set up the api connection
  * $api = Phlickr_Api::createFrom(API_CONFIG_FILE);

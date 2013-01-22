@@ -11,7 +11,7 @@
 /**
  * This class implements the IList interface.
  */
-require_once 'Phlickr/Framework/IList.php';
+require_once dirname(__FILE__) . '/IList.php';
 
 /**
  * A base class for the Phlickr lists that wrap XML returned by API calls.

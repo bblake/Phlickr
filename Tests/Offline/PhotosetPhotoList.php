@@ -7,9 +7,9 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Phlickr/PhotosetPhotoList.php';
-require_once 'Phlickr/Tests/Mocks/Request.php';
+require_once dirname(__FILE__) . 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/PhotosetPhotoList.php';
+require_once dirname(__FILE__) . '/Tests/Mocks/Request.php';
 
 class Phlickr_Tests_Offline_PhotosetPhotoList extends PHPUnit_Framework_TestCase {
     var $api, $request, $psl;
@@ -64,7 +64,7 @@ class Phlickr_Tests_Offline_PhotosetPhotoList extends PHPUnit_Framework_TestCase
 
         $photo = $this->psl->getRandomPhoto();
         $this->assertNotNull($photo);
-        $this->assertType('Phlickr_Photo', $photo);
+        $this->assertType('_Photo', $photo);
         $id1 = $photo->getId();
 
         $id2 = $this->psl->getRandomPhoto()->getId();
