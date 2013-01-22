@@ -16,7 +16,6 @@
  * @see     Phlickr_Photo
  * @since   0.2.1
  * @todo    Add sample code.
- * @todo    Implement a setPerms().
  */
 class Phlickr_AuthedPhoto extends Phlickr_Photo {
     /**
@@ -46,6 +45,24 @@ class Phlickr_AuthedPhoto extends Phlickr_Photo {
             array('photo_id' => $this->getId())
         );
     }
+    
+    /**
+     * Sets the license for a photo.
+     *
+     * @param    integer $license_id The ID of the license. 0 to remove.
+     * @returns  void
+     * @see      Phlickr_Api::getLicenses()
+     */
+    public function setLicense($license_id) {
+        $resp = $this->getApi()->executeMethod(
+            'flickr.photos.licenses.setLicense',
+            array(
+                'photo_id' => $this->getId(),
+                'license_id' => $license_id,
+            )
+        );
+        $this->refresh();
+    }
 
     /**
      * Change the photo's title and description
@@ -70,8 +87,6 @@ class Phlickr_AuthedPhoto extends Phlickr_Photo {
     /**
      * Change the photo's permissions.
      *
-     * <b>THIS IS NOT IMPLEMENTED YET</b>.
-     *
      * @param   boolean     $forPublic Should the photo be visible to everyone?
      * @param   boolean     $forFriends If the photo is private, should friends
      *          be able to view it?
@@ -84,10 +99,20 @@ class Phlickr_AuthedPhoto extends Phlickr_Photo {
      * @return  void
      * @throws  Phlickr_Exception
      * @see     isForPublic(), isForFriends(), isForFamily()
-     * @todo    implement this...
      */
     public function setPerms($forPublic, $forFriends, $forFamily, $whoCanComment, $whoCanAddMeta) {
-        throw new Exception('sorry, not implemented');
+        $resp = $this->getApi()->executeMethod(
+            'flickr.photos.setPerms',
+            array(
+              'photo_id' => $this->getId(),
+              'is_public' => $forPublic,
+              'is_friend' => $forFriends,
+              'is_family' => $forFamily,
+              'perm_comment' => $whoCanComment,
+              'perm_addmeta' => $whoCanAddMeta,
+            )
+        );
+        $this->refresh();
     }
 
     /**
