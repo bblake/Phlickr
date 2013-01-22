@@ -167,6 +167,21 @@ class Phlickr_Photo extends Phlickr_Framework_ObjectBase {
         }
         return (string) $this->_cachedXml->description;
     }
+    
+    
+    /**
+     * Get the photo's license
+     *
+     * @return integer
+     * @see Phlickr_Api::getLicenses(), Phlicker_AuthedPhoto::setLicense()
+     */
+    public function getLicense() {
+        if (!isset($this->_cachedXml['license'])) {
+          $this->load();
+        }
+        return (string) $this->_cachedXml['license'];
+    }
+    
 
     /**
      * Get a string of the day and time when the photo was posted.
