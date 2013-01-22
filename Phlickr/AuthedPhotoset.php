@@ -119,4 +119,24 @@ class Phlickr_AuthedPhotoset extends Phlickr_Photoset {
         $ret->refresh();
         return $ret;
     }
+    
+    
+    /**
+     * Add a photo to the photoset.
+     *
+     * Photo is added to the end of the photoset. Photo must be owned by the
+     * current authenticated user.
+     *
+     * @param  integer $photoId ID of the photo to add.
+     */
+    public function addPhoto($photoId) {
+      $req = $this->getApi()->executeMethod('flickr.photosets.addPhoto',
+        array(
+          'photoset_id' => $this->getId(),
+          'photo_id' => $photoId
+        )
+      );
+      $this->refresh();
+    }
+     
 }
