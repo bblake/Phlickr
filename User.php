@@ -234,6 +234,48 @@ class Phlickr_User extends Phlickr_Framework_ObjectBase {
         }
         return (integer) $this->_cachedXml->photos->count;
     }
+    
+    
+    /**
+     * Returns a list of collections the user owns. This is a pro account
+     * feature, so most users will not have any.
+     *
+     * @return array
+     */
+    public function getCollections() {
+        $response = $this->getApi()->createRequest(
+            'flickr.collections.getTree',
+            array('user_id' => $this->getId())
+        )->execute();
+        
+        $collections = array();
+        foreach ($response->xml->collections->collection as $collection) {
+            $collections = array_merge($collections, $this->buildCollectionsArray($collection));
+        }
+        
+        return $collections;
+    }
+    
+    /**
+     * Helper function, recursively assigns collections to an array.
+     */
+    private function buildCollectionsArray($collection) {
+        $id = (string) $collection['id'];
+        $array[$id]['id'] = $id;
+        $array[$id]['title'] = (string) $collection['title'];
+        $array[$id]['description'] = isset($collection['description']) ? (string) $collection['description'] : '';
+        if (isset($collection->collection)) {
+            $array[$id]['collections'] = array();
+            foreach ($collection->collection as $sub_collection) {
+                $array[$id]['collections'] = array_merge(
+                  $array[$id]['collections'],
+                  $this->buildCollectionsArray($sub_collection)
+                );
+            }
+        }
+        
+        return $array;
+    }
 
 
     /**
