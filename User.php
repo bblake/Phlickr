@@ -246,7 +246,7 @@ class Phlickr_User extends Phlickr_Framework_ObjectBase {
         $resp = $this->getApi()->executeMethod(
             'flickr.collections.getTree',
             array('user_id' => $this->getId())
-        )
+        );
         
         $collections = array();
         foreach ($resp->xml->collections->collection as $collection) {
