@@ -243,13 +243,13 @@ class Phlickr_User extends Phlickr_Framework_ObjectBase {
      * @return array
      */
     public function getCollections() {
-        $response = $this->getApi()->createRequest(
+        $resp = $this->getApi()->executeMethod(
             'flickr.collections.getTree',
             array('user_id' => $this->getId())
-        )->execute();
+        )
         
         $collections = array();
-        foreach ($response->xml->collections->collection as $collection) {
+        foreach ($resp->xml->collections->collection as $collection) {
             $collections = array_merge($collections, $this->buildCollectionsArray($collection));
         }
         
