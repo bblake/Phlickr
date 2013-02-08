@@ -119,4 +119,47 @@ class Phlickr_Collection extends Phlickr_Framework_ObjectBase {
         }
         return (string) $this->_cachedXml->description;
     }
+    
+    
+    /**
+     * Return the children of this collection. Can either be collections,
+     * or sets.
+     *
+     * @return array
+     */
+    public function getTree() {
+        $resp = $this->getApi()->executeMethod(
+            'flickr.collections.getTree',
+            array(
+              'collection_id' => $this->getId(),
+            )
+        );
+        return $this->buildCollectionsTreeArray($resp->xml->collections->collection);
+    }
+    
+    /**
+     * Helper function, recursively assigns collection tree to an array.
+     */
+    private function buildCollectionsTreeArray($collection) {
+        $children = array();
+        if (isset($collection->collection)) {
+            foreach ($collection->collection as $subcollection) {
+                $id = (string) $subcollection['id'];
+                $children['collections'][$id]['id'] = $id;
+                $children['collections'][$id]['title'] = $subcollection['title'];
+                if (isset($subcollection->collection)) {
+                  $children['collections'][$id]['collections'] = $this->buildCollectionsTreeArray($subcollection);
+                }
+            }
+        }
+        elseif (isset($collection->set)) {
+            foreach ($collection->set as $set) {
+                $id = (string) $set['id'];
+                $children['sets'][$id]['id'] = $id;
+                $children['sets'][$id]['title'] = (string)$set['title'];
+            }
+        }
+        
+        return $children;
+    }
 }

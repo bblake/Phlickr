@@ -42,17 +42,14 @@ class Phlickr_AuthedCollection extends Phlickr_Collection {
      * Edit sets in the collection.
      *
      * @param   array $ids Array of flickr IDs.
-     * @param   bool $remove Whether or not to remove sets that aren't
-     *          in the $ids list.
      * @throws  Phlickr_Exception, Phlickr_ConnectionException,
      *          Phlickr_XmlParseException
      */
-    function editSets($ids, $remove = FALSE) {
+    function editSets($ids) {
         $resp = $this->getApi()->executeMethod(
             'flickr.collections.editSets',
             array(
                 'collection_id' => $this->getId(),
-                'do_remove' => $remove,
                 'photoset_ids' => implode(',', $ids),
             )
         );
