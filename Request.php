@@ -156,6 +156,8 @@ class Phlickr_Request {
         curl_setopt($ch, CURLOPT_TIMEOUT,$timeout);
         // set the PHP script's timeout to be greater than CURL's
         set_time_limit(self::TIMEOUT_CONNECTION + $timeout + 5);
+        // remove the Expect: 100-continue header
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Expect:'));
 
         $result = curl_exec($ch);
         // check for errors
