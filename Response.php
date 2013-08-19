@@ -105,6 +105,7 @@ class Phlickr_Response {
      * @throws Phlickr_XmlParseException, Phlickr_Exception
      */
     function __construct($restResult, $throwOnFailed = false) {
+        libxml_use_internal_errors(true);
         $xml = simplexml_load_string($restResult);
         if (false === $xml) {
             throw new Phlickr_XmlParseException('Could not parse XML.', $restResult);
