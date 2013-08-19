@@ -82,7 +82,7 @@ class Phlickr_Api {
      * @var string
      * @see setEndpointUrl()
      */
-    const REST_ENDPOINT_URL = 'http://flickr.com/services/rest/';
+    const REST_ENDPOINT_URL = 'http://www.flickr.com/services/rest/';
     /**
      * The name of the API key label in the settings files created by saveAs()
      * and read by createFrom().
