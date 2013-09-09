@@ -143,5 +143,19 @@ class Phlickr_AuthedPhotoset extends Phlickr_Photoset {
       );
       $this->refresh();
     }
-     
+
+    /**
+     * Removes a photo from the photoset.
+     *
+     * @param  integer $photoId ID of the photo to remove.
+     */
+    public function removePhoto($photoId) {
+      $req = $this->getApi()->executeMethod('flickr.photosets.removePhoto',
+        array(
+          'photoset_id' => $this->getId(),
+          'photo_id' => $photoId
+        )
+      );
+      $this->refresh();
+    }     
 }
