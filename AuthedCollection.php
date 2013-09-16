@@ -51,7 +51,11 @@ class Phlickr_AuthedCollection extends Phlickr_Collection {
             array(
                 'collection_id' => $this->getId(),
                 'photoset_ids' => implode(',', $ids),
-            )
+                'do_remove' => 0,
+                'src' => 'js'
+            ),
+            FALSE,
+            TRUE
         );
         $this->refresh();
     }

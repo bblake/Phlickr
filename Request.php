@@ -198,6 +198,19 @@ class Phlickr_Request {
 
         return implode('&', $values);
     }
+    
+    static function signPost($secret, $params)
+    {
+        $signing = '';
+        $values = array();
+        ksort($params);
+
+        foreach($params as $key => $value) {
+            $signing .= $key . $value;
+        }
+
+        return array('api_sig' => md5($secret . $signing));
+    }    
 
     /**
      * Return a reference to this Request's Phlickr_Api.
@@ -282,7 +295,7 @@ class Phlickr_Request {
      * @see     buildUrl, Phlickr_Api::getKey(), Phlickr_Api::getSecret()
      * @uses    signParams() to create a signed URL.
      */
-    public function buildUrl()
+    public function buildUrl($isPost = false)
     {
         $api = $this->getApi();
 
@@ -295,8 +308,15 @@ class Phlickr_Request {
         );
         $params['method'] = $this->getMethod();
 
-        return $api->getEndpointUrl() . '?'
+        if ($isPost) {
+          $params = array_merge($params, $this->signPost($api->getSecret(), $params));
+          $this->setParams($params);
+          return $api->getEndpointUrl();
+        }
+        else {
+          return $api->getEndpointUrl() . '?'
             . self::signParams($api->getSecret(), $params);
+        }
     }
 
     /**
@@ -313,15 +333,21 @@ class Phlickr_Request {
      * @uses    Phlickr_Cache to load and cached requests.
      * @uses    Phlickr_Response to return results.
      */
-    public function execute($allowCached = false)
+    public function execute($allowCached = false, $isPost = false)
     {
-        $url = $this->buildUrl();
+        $url = $this->buildUrl($isPost);
         $cache =& $this->getApi()->getCache();
 //print "\nREQUEST: $url\n";
         if ($allowCached && $cache->has($url)) {
             $result = $cache->get($url);
         } else {
-            $result = self::submitHttpPost($url);
+            if ($isPost) {
+              $params = $this->getParams();
+              $result = self::submitHttpPost($url, $params);
+            }
+            else {
+              $result = self::submitHttpPost($url);
+            }
             $cache->set($url, $result);
         }
 //print "RESULT: $result\n";

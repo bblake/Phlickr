@@ -574,8 +574,8 @@ class Phlickr_Api {
      * @uses    createRequest() to build the Phlickr_Request object.
      * @uses    Phlickr_Request::execute() to execute the method.
      */
-    public function executeMethod($method, $params = array(), $allowCached = true) {
-        return $this->createRequest($method, $params)->execute($allowCached);
+    public function executeMethod($method, $params = array(), $allowCached = true, $isPost = false) {
+        return $this->createRequest($method, $params)->execute($allowCached, $isPost);
     }
     
     /**
