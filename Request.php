@@ -62,11 +62,11 @@ class Phlickr_Request {
     /**
      * Number of seconds to wait while connecting to the server.
      */
-    const TIMEOUT_CONNECTION = 20;
+    const TIMEOUT_CONNECTION = 30;
     /**
      * Total number of seconds to wait for a request.
      */
-    const TIMEOUT_TOTAL = 50;
+    const TIMEOUT_TOTAL = 120;
 
     /**
      * Phlickr_API object
@@ -145,7 +145,7 @@ class Phlickr_Request {
         if (isset($postParams)) {
             curl_setopt($ch, CURLOPT_POSTFIELDS, $postParams);
         }else{
-            curl_setopt($ch, CURLOPT_POSTFIELDS, "");        	
+            curl_setopt($ch, CURLOPT_POSTFIELDS, "");
         }
         // make sure problems are caught
         curl_setopt($ch, CURLOPT_FAILONERROR, 1);
@@ -154,8 +154,14 @@ class Phlickr_Request {
         // set the timeouts
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, self::TIMEOUT_CONNECTION);
         curl_setopt($ch, CURLOPT_TIMEOUT,$timeout);
-        // set the PHP script's timeout to be greater than CURL's
-        set_time_limit(self::TIMEOUT_CONNECTION + $timeout + 5);
+
+        $min_time = self::TIMEOUT_CONNECTION + $timeout + 5;
+        $max_execution_time = ini_get('max_execution_time');
+        // Adjust time limit only if it's too low.
+        if ($max_execution_time > 0 && $max_execution_time < $min_time) {
+          // set the PHP script's timeout to be greater than CURL's
+          set_time_limit($min_time);
+        }
         // remove the Expect: 100-continue header
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Expect:'));
 
@@ -198,7 +204,7 @@ class Phlickr_Request {
 
         return implode('&', $values);
     }
-    
+
     static function signPost($secret, $params)
     {
         $signing = '';
@@ -210,7 +216,7 @@ class Phlickr_Request {
         }
 
         return array('api_sig' => md5($secret . $signing));
-    }    
+    }
 
     /**
      * Return a reference to this Request's Phlickr_Api.
