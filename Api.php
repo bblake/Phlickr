@@ -82,7 +82,7 @@ class Phlickr_Api {
      * @var string
      * @see setEndpointUrl()
      */
-    const REST_ENDPOINT_URL = 'http://www.flickr.com/services/rest/';
+    const REST_ENDPOINT_URL = 'https://www.flickr.com/services/rest/';
     /**
      * The name of the API key label in the settings files created by saveAs()
      * and read by createFrom().
@@ -577,7 +577,7 @@ class Phlickr_Api {
     public function executeMethod($method, $params = array(), $allowCached = true, $isPost = false) {
         return $this->createRequest($method, $params)->execute($allowCached, $isPost);
     }
-    
+
     /**
      * Fetches a list of available photo licenses for Flickr.
      *
@@ -598,7 +598,7 @@ class Phlickr_Api {
             'url' => (string)$license['url'],
           );
         }
-        
+
         return $licenses;
     }
 }

@@ -153,7 +153,8 @@ class Phlickr_Request {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         // set the timeouts
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, self::TIMEOUT_CONNECTION);
-        curl_setopt($ch, CURLOPT_TIMEOUT,$timeout);
+        curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 
         $min_time = self::TIMEOUT_CONNECTION + $timeout + 5;
         $max_execution_time = ini_get('max_execution_time');
@@ -170,7 +171,8 @@ class Phlickr_Request {
         if (0 == curl_errno($ch)) {
             curl_close($ch);
             return $result;
-        } else {
+        }
+        else {
             $ex = new Phlickr_ConnectionException(
                 'Request failed. ' . curl_error($ch), curl_errno($ch), $url);
             curl_close($ch);
@@ -343,7 +345,7 @@ class Phlickr_Request {
     {
         $url = $this->buildUrl($isPost);
         $cache =& $this->getApi()->getCache();
-//print "\nREQUEST: $url\n";
+
         if ($allowCached && $cache->has($url)) {
             $result = $cache->get($url);
         } else {
@@ -356,7 +358,7 @@ class Phlickr_Request {
             }
             $cache->set($url, $result);
         }
-//print "RESULT: $result\n";
+
         return new Phlickr_Response($result, $this->_throwOnFail);
     }
 }
