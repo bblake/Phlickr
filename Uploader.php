@@ -121,13 +121,13 @@ class Phlickr_Uploader {
      *
      * @var string
      */
-    const UPLOAD_URL = 'http://www.flickr.com/services/upload/';
+    const UPLOAD_URL = 'https://www.flickr.com/services/upload/';
     /**
      * The URL that the user should be redirected to for editing uploads.
      *
      * @var string
      */
-    const EDIT_URL = 'http://www.flickr.com/tools/uploader_edit.gne';
+    const EDIT_URL = 'https://www.flickr.com/tools/uploader_edit.gne';
     /**
      * Number of seconds to wait for an upload to complete.
      * @var integer
